@@ -2,7 +2,6 @@
 
 require("load_func.php");
 
-header('Content-Type: application/json');
 
 # Webs service with JSON
 try {
@@ -16,7 +15,7 @@ try {
 
         $meta = let_json("meta.json");
 
-        $domain_list[]
+        $domain_list = $_POST['domain_list'];
 
         echo def_json($meta->in->file, ['domain_list.json' => $domain_list]);
 
