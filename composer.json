@@ -1,0 +1,9 @@
+{
+    "require": {
+        "php": "^7.3",
+        "plesk/api-php-lib": "^1.0",
+        "symfony/http-client": "^5.2",
+        "letjson/composer": "dev-main",
+        "parkingomat/plesk.domains.php": "dev-main"
+    }
+}

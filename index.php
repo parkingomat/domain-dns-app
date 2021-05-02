@@ -15,9 +15,17 @@ try {
 
         $meta = let_json("meta.json");
 
-        $domain_list = $_POST['domain_list'];
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            throw new \Exception("ONLY POST METHOD");
+        }
 
-        echo def_json($meta->in->file, ['domain_list.json' => $domain_list]);
+        if (empty($_POST[$meta->in->post])){
+            throw new \Exception("Empty POST param: " . $meta->in->post);
+        }
+
+        $domain_list = $_POST[$meta->in->post];
+
+        echo def_json($meta->out->file, [ $meta->in->post . '.json' => $domain_list]);
 
     });
 

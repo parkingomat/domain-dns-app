@@ -1,6 +1,6 @@
 .idea/
 .load_func/
-
+composer.lock
 # Libraries
 api_sql.php
 load_func.php
@@ -19,7 +19,9 @@ nameserver_list.json
 domain_nameserver_list.json
 
 
+
 # PHP
+composer.lock
 composer.phar
 /vendor/
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
