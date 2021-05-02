@@ -29,17 +29,29 @@ echo $content . "\n";
 $httpClient = HttpClient::create();
 $response = $httpClient->request('POST', $url, [
     'body' => [
-        'domain_list' => [
-            "apifoundation.com",
-            "apipong.com",
-            "apiprogram.com",
-            "apiexec.com",
-            "devopsterminal.com",
-            "apiunit.com",
-            "apicra.com",
-            "apibuild.com",
-            "promagen.com"
-        ]
+        'domain_list' => "
+        
+        "
+    ]
+]);
+$content = $response->getContent();
+echo $content . "\n";
+
+
+$httpClient = HttpClient::create();
+$response = $httpClient->request('POST', $url, [
+    'body' => [
+        'domain_list' => "
+apifoundation.com
+apipong.com
+apiprogram.com
+apiexec.com
+devopsterminal.com
+apiunit.com
+apicra.com
+apibuild.com
+promagen.com
+        "
     ]
 ]);
 $content = $response->getContent();

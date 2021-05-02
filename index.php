@@ -2,6 +2,7 @@
 
 require("load_func.php");
 
+header('Content-Type: application/json');
 
 # Webs service with JSON
 try {
@@ -23,9 +24,22 @@ try {
             throw new \Exception("Empty POST param: " . $meta->in->post);
         }
 
-        $domain_list = $_POST[$meta->in->post];
+        $domain_text = $_POST[$meta->in->post];
 
-        echo def_json($meta->out->file, [ $meta->in->post . '.json' => $domain_list]);
+        if (empty($domain_text)) {
+            throw new \Exception("Empty param: " . $meta->in->post);
+        }
+
+        $domain_array = array_values(array_filter(explode(PHP_EOL, $domain_text)));
+
+        $domain_list = each_func($domain_array, function ($domain) {
+            $domain = trim($domain);
+            if (empty($domain)) return null;
+
+            return $domain;
+        });
+
+        echo def_json($meta->out->file, [ $meta->in->post => $domain_list]);
 
     });
 
